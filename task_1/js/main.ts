@@ -4,29 +4,41 @@ interface Teacher {
   fullTimeEmployee: boolean;
   yearsOfExperience?: number;
   location: string;
-  [key: string]: any
+  [key: string]: any;
 }
 
 interface Directors extends Teacher {
   numberOfReports: number;
 }
-const teacher1: Teacher = {
-    firstName: 'Frank',
-    lastName: 'Donald',
-    fullTimeEmployee: true,
-    location: 'New Jersey',
-    contract: false,
-}
 
-console.log(teacher1);
-
-function printTeacher(firstName:string, lastName:string) {
+function printTeacher(firstName: string, lastName: string) {
   const initial = firstName.split("");
-  return (initial[0] + "." + lastName)
+  return initial[0] + "." + lastName;
 }
 
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-console.log(printTeacher("Michael","johnson"))
+interface StudentClassInterface {
+  firstName: string;
+  lastName: string;
+}
+
+class StudentClass implements StudentClassInterface {
+  firstName: string;
+  lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return "Currently working";
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+}
